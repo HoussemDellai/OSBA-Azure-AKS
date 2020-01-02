@@ -1,0 +1,16 @@
+# src: https://github.com/Azure/open-service-broker-azure/blob/master/contrib/k8s/examples/sql/sql-instance.yaml
+apiVersion: servicecatalog.k8s.io/v1beta1
+kind: ServiceInstance
+metadata:
+  name: my-sql-instance
+  namespace: osba
+spec:
+  clusterServiceClassExternalName: azure-sql-12-0
+  clusterServicePlanExternalName: basic
+  parameters:
+    location: eastus
+    resourceGroup: osba-rg
+    firewallRules:
+    - startIPAddress: "0.0.0.0"
+      endIPAddress: "255.255.255.255"
+      name: "AllowAll"

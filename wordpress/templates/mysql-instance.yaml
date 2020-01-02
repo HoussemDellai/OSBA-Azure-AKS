@@ -1,0 +1,22 @@
+{{- if not .Values.mariadb.enabled }}
+apiVersion: servicecatalog.k8s.io/v1beta1
+kind: ServiceInstance
+metadata:
+  name: {{ template "fullname" . }}-mysql-instance
+  labels:
+    app: {{ template "fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  clusterServiceClassExternalName: {{ .Values.externalDatabase.azure.serviceName }}
+  clusterServicePlanExternalName: {{ .Values.externalDatabase.azure.servicePlan }}
+  parameters:
+    location: {{ .Values.externalDatabase.azure.location }}
+    resourceGroup: {{ .Release.Namespace }}
+    sslEnforcement: {{ .Values.externalDatabase.azure.ssl }}
+    firewallRules:
+    - startIPAddress: "0.0.0.0"
+      endIPAddress: "255.255.255.255"
+      name: "AllowAll"
+{{- end }}

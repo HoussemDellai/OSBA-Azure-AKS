@@ -1,0 +1,68 @@
+  
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+  namespace: osba
+spec:
+  selector:
+    matchLabels:
+      app: app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+      - name: app
+        image: houssemdocker/webapp:azure-osba
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: "1"
+            memory: "200Mi"
+          requests:
+            cpu: "0.1"
+            memory: "100Mi"
+        env:
+          - name: host
+            valueFrom:
+              secretKeyRef:
+                name: my-sql-secret
+                key: host
+          - name: port
+            valueFrom:
+              secretKeyRef:
+                name: my-sql-secret
+                key: port
+          - name: database
+            valueFrom:
+              secretKeyRef:
+                name: my-sql-secret
+                key: database
+          - name: username
+            valueFrom:
+              secretKeyRef:
+                name: my-sql-secret
+                key: username
+          - name: password
+            valueFrom:
+              secretKeyRef:
+                name: my-sql-secret
+                key: password
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: app-service
+  namespace: osba
+spec:
+  selector:
+    app: app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  type: LoadBalancer

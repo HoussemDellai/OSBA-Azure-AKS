@@ -1,0 +1,10 @@
+# src: https://github.com/Azure/open-service-broker-azure/blob/master/contrib/k8s/examples/sql/sql-binding.yaml
+apiVersion: servicecatalog.k8s.io/v1beta1
+kind: ServiceBinding
+metadata:
+  name: my-sql-binding
+  namespace: osba
+spec:
+  instanceRef:
+    name: my-sql-instance
+  secretName: my-sql-secret
