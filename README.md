@@ -1,7 +1,7 @@
 # OSBA-Azure-AKS
 Sample project for demoing OSBA (Open Service Broker API) for Azure and Kubernetes/AKS.
 
-# src: https://docs.microsoft.com/en-us/azure/aks/integrate-azure
+src: https://docs.microsoft.com/en-us/azure/aks/integrate-azure
 
 
 helm init --upgrade
