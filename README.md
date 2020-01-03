@@ -1,8 +1,6 @@
 # OSBA-Azure-AKS
 Sample project for demoing OSBA (Open Service Broker API) for Azure and Kubernetes/AKS.
 
-src: https://docs.microsoft.com/en-us/azure/aks/integrate-azure
-
 
 helm init --upgrade
 
@@ -51,3 +49,6 @@ kubectl describe secret <secret-name>
 Check the created Binding using kubectl and svcat CLI:
 kubectl get ServiceBindings
 svcat get bindings
+
+
+src: https://docs.microsoft.com/en-us/azure/aks/integrate-azure
