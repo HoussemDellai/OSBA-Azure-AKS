@@ -33,3 +33,21 @@ svcat get brokers
 svcat get classes
 svcat get plans
 
+# Create the SQL instance and Database
+kubectl create -f sql-instance.yaml
+
+# check the created resources in Azure Portal
+# check the created resources in CLI
+kubectl get ServiceInstances
+svcat get instances
+
+# Create the Service Binding
+kubectl create -f sql-binding.yaml
+
+# The Service Binding will create a Kubernetes Secret with username, password, database name, server host, port number...
+kubectl get secrets
+kubectl describe secret <secret-name>
+
+Check the created Binding using kubectl and svcat CLI:
+kubectl get ServiceBindings
+svcat get bindings
