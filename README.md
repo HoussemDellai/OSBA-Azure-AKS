@@ -2,6 +2,12 @@
 Sample project for demoing OSBA (Open Service Broker API) for Azure and Kubernetes/AKS.
 
 
+# Requirements:
+1) Kubernetes cluster
+2) kubectl CLI
+3) svcat CLI
+
+
 helm init --upgrade
 
 
