@@ -1,6 +1,8 @@
 # OSBA-Azure-AKS
 Sample project for demoing OSBA (Open Service Broker API) for Azure and Kubernetes/AKS.
 
+More details about this workshop is available on this article:
+https://medium.com/@HoussemDellai/introduction-to-kubernetes-service-catalog-37317b15670
 
 ## Requirements:
 1) Kubernetes cluster
